@@ -29,31 +29,15 @@ const Edit = ({ attributes, setAttributes }) => {
 
           <div className="advanced-block-content">
             <div className="advanced-block-text">
-              <RichText
-                tagName="span"
-                value={supTitle}
-                onChange={(value) => setAttributes({ supTitle: value })}
-                placeholder={__('Текст...', 'theme')}
-                className="sup-title"
-              />
+              <RichText.Content tagName="span" value={supTitle} className="sup-title" />
 
-              <RichText
-                tagName="h1"
-                value={title}
-                onChange={(value) => setAttributes({ title: value })}
-                placeholder={__('Заголовок...', 'theme')}
-                className="title"
-              />
+              <RichText.Content tagName="h1" value={title} className="title" />
 
-              <RichText
-                tagName="p"
-                value={description}
-                onChange={(value) => setAttributes({ description: value })}
-                placeholder={__('Описание...', 'theme')}
-                className="description"
-              />
+              <RichText.Content tagName="p" value={description} className="description" />
 
-              <RichText.Content tagName="span" value={button} className="btn" />
+              {button && (
+                <RichText.Content tagName="span" value={button} className="btn" />
+              )}
             </div>
             <div className="advanced-block-image">
               image
