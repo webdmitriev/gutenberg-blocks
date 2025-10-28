@@ -102,7 +102,6 @@ const Edit = ({ attributes, setAttributes }) => {
             </div>
 
             <div className="advanced-block-images">
-              {/* 🖼️ Изображение 1 */}
               <MediaUploadCheck>
                 <MediaUpload
                   onSelect={onSelectImageOne}
@@ -142,7 +141,6 @@ const Edit = ({ attributes, setAttributes }) => {
                 />
               </MediaUploadCheck>
 
-              {/* 🖼️ Изображение 2 */}
               <MediaUploadCheck>
                 <MediaUpload
                   onSelect={onSelectImageTwo}
