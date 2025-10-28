@@ -413,17 +413,29 @@ const Edit = ({
     tagName: "span",
     value: supTitle,
     className: "sup-title"
-  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText.Content, {
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText, {
     tagName: "h1",
     value: title,
+    onChange: value => setAttributes({
+      title: value
+    }),
+    placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Введите заголовок...', 'theme'),
     className: "title"
-  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText.Content, {
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText, {
     tagName: "p",
     value: description,
+    onChange: value => setAttributes({
+      description: value
+    }),
+    placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Введите текст...', 'theme'),
     className: "description"
-  }), button && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText.Content, {
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText, {
     tagName: "span",
     value: button,
+    onChange: value => setAttributes({
+      button: value
+    }),
+    placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Введите текст...', 'theme'),
     className: "theme-button"
   })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "advanced-block-image"
@@ -648,8 +660,8 @@ const typographText = text => {
   if (!text || typeof text !== 'string') return text;
   let result = text.replace(/\u00A0/g, ' ');
 
-  // Кавычки
-  result = result.replace(/"([^"]+)"/g, '«$1»');
+  // Кавычки (не стоит использовать тк ломает ссылки и атрибуты)
+  // result = result.replace(/"([^"]+)"/g, '«$1»');
 
   // Тире между словами
   result = result.replace(/(\s)-(\s)/g, '$1—$2');

@@ -62,13 +62,29 @@ const Edit = ({ attributes, setAttributes }) => {
             <div className="advanced-block-text">
               <RichText.Content tagName="span" value={supTitle} className="sup-title" />
 
-              <RichText.Content tagName="h1" value={title} className="title" />
+              <RichText
+                tagName="h1"
+                value={title}
+                onChange={(value) => setAttributes({ title: value })}
+                placeholder={__('Введите заголовок...', 'theme')}
+                className="title"
+              />
 
-              <RichText.Content tagName="p" value={description} className="description" />
+              <RichText
+                tagName="p"
+                value={description}
+                onChange={(value) => setAttributes({ description: value })}
+                placeholder={__('Введите текст...', 'theme')}
+                className="description"
+              />
 
-              {button && (
-                <RichText.Content tagName="span" value={button} className="theme-button" />
-              )}
+              <RichText
+                tagName="span"
+                value={button}
+                onChange={(value) => setAttributes({ button: value })}
+                placeholder={__('Введите текст...', 'theme')}
+                className="theme-button"
+              />
             </div>
             <div className="advanced-block-image">
               {imageOneUrl && (

@@ -4,8 +4,8 @@ export const typographText = (text) => {
 
   let result = text.replace(/\u00A0/g, ' ');
 
-  // Кавычки
-  result = result.replace(/"([^"]+)"/g, '«$1»');
+  // Кавычки (не стоит использовать тк ломает ссылки и атрибуты)
+  // result = result.replace(/"([^"]+)"/g, '«$1»');
 
   // Тире между словами
   result = result.replace(/(\s)-(\s)/g, '$1—$2');
