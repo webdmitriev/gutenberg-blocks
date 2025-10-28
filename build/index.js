@@ -77,9 +77,29 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
 /* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _utils_useTypograf__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../utils/useTypograf */ "./src/utils/useTypograf.js");
 
 
 
+ // путь подкорректируй под свой проект
+
+const FieldLabelWithButton = ({
+  label,
+  onTypograph,
+  hasValue
+}) => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.Flex, {
+  justify: "space-between",
+  align: "center"
+}, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", null, label), hasValue && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.Button, {
+  variant: "tertiary",
+  size: "small",
+  onClick: onTypograph,
+  title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Типографировать это поле', 'theme'),
+  style: {
+    minWidth: 'auto',
+    padding: '4px 8px'
+  }
+}, "\uD83C\uDFA8"));
 const ContentPanel = ({
   attributes,
   setAttributes
@@ -88,14 +108,46 @@ const ContentPanel = ({
     supTitle,
     title,
     description,
-    button,
-    backgroundColor
+    button
   } = attributes;
+
+  // Подключаем общий хук
+  const {
+    typographField,
+    typographAllFields
+  } = (0,_utils_useTypograf__WEBPACK_IMPORTED_MODULE_3__.useTypograf)(attributes, setAttributes, ['supTitle', 'title', 'description', 'button']);
+  const hasTextToTypograph = supTitle || title || description || button;
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.PanelBody, {
     title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Настройки контента', 'theme'),
     initialOpen: true
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.TextareaControl, {
-    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Текст над заголовком', 'theme'),
+  }, hasTextToTypograph && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    style: {
+      marginBottom: '20px',
+      padding: '10px',
+      background: '#f6f7f7',
+      borderRadius: '4px'
+    }
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.Flex, {
+    direction: "column",
+    gap: "10px"
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.Button, {
+    variant: "primary",
+    onClick: typographAllFields,
+    style: {
+      width: '100%'
+    }
+  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Типографировать все поля', 'theme')), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    style: {
+      fontSize: '12px',
+      color: '#757575',
+      textAlign: 'center'
+    }
+  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Расставит кавычки, тире и неразрывные пробелы', 'theme')))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.TextareaControl, {
+    label: (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(FieldLabelWithButton, {
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Текст над заголовком', 'theme'),
+      onTypograph: () => typographField('supTitle'),
+      hasValue: !!supTitle
+    }),
     value: supTitle,
     onChange: value => setAttributes({
       supTitle: value
@@ -103,7 +155,11 @@ const ContentPanel = ({
     placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Текст...', 'theme'),
     rows: 2
   }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.TextareaControl, {
-    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Заголовок', 'theme'),
+    label: (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(FieldLabelWithButton, {
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Заголовок', 'theme'),
+      onTypograph: () => typographField('title'),
+      hasValue: !!title
+    }),
     value: title,
     onChange: value => setAttributes({
       title: value
@@ -111,7 +167,11 @@ const ContentPanel = ({
     placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Введите заголовок...', 'theme'),
     rows: 2
   }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.TextareaControl, {
-    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Описание', 'theme'),
+    label: (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(FieldLabelWithButton, {
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Описание', 'theme'),
+      onTypograph: () => typographField('description'),
+      hasValue: !!description
+    }),
     value: description,
     onChange: value => setAttributes({
       description: value
@@ -119,7 +179,11 @@ const ContentPanel = ({
     placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Введите описание...', 'theme'),
     rows: 5
   }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.__experimentalInputControl, {
-    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Текст кнопки', 'theme'),
+    label: (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(FieldLabelWithButton, {
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Текст кнопки', 'theme'),
+      onTypograph: () => typographField('button'),
+      hasValue: !!button
+    }),
     value: button,
     onChange: value => setAttributes({
       button: value
@@ -413,6 +477,70 @@ __webpack_require__.r(__webpack_exports__);
 
 // import blocks
 
+
+/***/ }),
+
+/***/ "./src/utils/useTypograf.js":
+/*!**********************************!*\
+  !*** ./src/utils/useTypograf.js ***!
+  \**********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   typographText: () => (/* binding */ typographText),
+/* harmony export */   useTypograf: () => (/* binding */ useTypograf)
+/* harmony export */ });
+// src/utils/useTypograf.js
+const typographText = text => {
+  if (!text || typeof text !== 'string') return text;
+  let result = text.replace(/\u00A0/g, ' ');
+
+  // Кавычки
+  result = result.replace(/"([^"]+)"/g, '«$1»');
+
+  // Тире между словами
+  result = result.replace(/(\s)-(\s)/g, '$1—$2');
+
+  // Короткое тире между числами
+  result = result.replace(/(\d)\s*-\s*(\d)/g, '$1–$2');
+
+  // Неразрывные пробелы после коротких слов
+  const shortWords = ['в', 'и', 'к', 'с', 'у', 'о', 'а', 'я', 'он', 'но', 'за', 'из', 'от', 'до', 'по', 'не', 'на', 'из', 'без'];
+  shortWords.forEach(word => {
+    const regex = new RegExp(`(^|\\s)${word}(\\s|$|[.,!?])`, 'gi');
+    result = result.replace(regex, `$1${word}\u00A0`);
+  });
+
+  // Неразрывные пробелы перед единицами измерения
+  result = result.replace(/(\d+)\s*(руб|р|USD|\$|EUR|€|кг|г|см|м|км|ч|мин|сек)/gi, '$1\u00A0$2');
+  return result;
+};
+
+// Универсальный хук для подключения к любому блоку
+const useTypograf = (attributes, setAttributes, fields) => {
+  const typographField = fieldName => {
+    const value = attributes[fieldName];
+    if (value) {
+      setAttributes({
+        [fieldName]: typographText(value)
+      });
+    }
+  };
+  const typographAllFields = () => {
+    const newAttributes = {};
+    fields.forEach(field => {
+      if (attributes[field]) {
+        newAttributes[field] = typographText(attributes[field]);
+      }
+    });
+    setAttributes(newAttributes);
+  };
+  return {
+    typographField,
+    typographAllFields
+  };
+};
 
 /***/ }),
 
