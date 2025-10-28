@@ -180,6 +180,8 @@
   cursor: no-drop;
 }
 .main-block .advanced-block .advanced-block-content .advanced-block-images {
+  display: flex;
+  gap: 10px;
   width: 100%;
   max-width: 54%;
 }

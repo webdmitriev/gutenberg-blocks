@@ -443,11 +443,7 @@ const Edit = ({
     placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Введите текст кнопки...', 'theme'),
     className: "theme-button"
   })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "advanced-block-images",
-    style: {
-      display: 'flex',
-      gap: '10px'
-    }
+    className: "advanced-block-images"
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.MediaUploadCheck, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.MediaUpload, {
     onSelect: onSelectImageOne,
     allowedTypes: ['image'],

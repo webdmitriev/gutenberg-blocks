@@ -101,7 +101,7 @@ const Edit = ({ attributes, setAttributes }) => {
               />
             </div>
 
-            <div className="advanced-block-images" style={{ display: 'flex', gap: '10px' }}>
+            <div className="advanced-block-images">
               {/* 🖼️ Изображение 1 */}
               <MediaUploadCheck>
                 <MediaUpload
