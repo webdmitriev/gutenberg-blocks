@@ -36,7 +36,7 @@ const Edit = ({ attributes, setAttributes }) => {
               <RichText.Content tagName="p" value={description} className="description" />
 
               {button && (
-                <RichText.Content tagName="span" value={button} className="btn" />
+                <RichText.Content tagName="span" value={button} className="theme-button" />
               )}
             </div>
             <div className="advanced-block-image">

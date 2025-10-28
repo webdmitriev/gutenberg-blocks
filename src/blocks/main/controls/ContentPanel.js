@@ -6,24 +6,26 @@ const ContentPanel = ({ attributes, setAttributes }) => {
 
   return (
     <PanelBody title={__('Настройки контента', 'theme')} initialOpen={true}>
-      <InputControl
+      <TextareaControl
         label={__('Текст над заголовком', 'theme')}
         value={supTitle}
         onChange={(value) => setAttributes({ supTitle: value })}
         placeholder={__('Текст...', 'theme')}
+        rows={2}
       />
-      <InputControl
+      <TextareaControl
         label={__('Заголовок', 'theme')}
         value={title}
         onChange={(value) => setAttributes({ title: value })}
         placeholder={__('Введите заголовок...', 'theme')}
+        rows={2}
       />
       <TextareaControl
         label={__('Описание', 'theme')}
         value={description}
         onChange={(value) => setAttributes({ description: value })}
         placeholder={__('Введите описание...', 'theme')}
-        rows={4}
+        rows={5}
       />
       <InputControl
         label={__('Текст кнопки', 'theme')}

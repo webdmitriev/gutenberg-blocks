@@ -21,7 +21,9 @@ const Save = ({ attributes }) => {
           <RichText.Content tagName="span" value={supTitle} className="sup-title" />
           <RichText.Content tagName="h1" value={title} className="title" />
           <RichText.Content tagName="p" value={description} className="description" />
-          <RichText.Content tagName="button" value={button} className="btn" />
+          {button && (
+            <RichText.Content tagName="button" value={button} className="theme-button" />
+          )}
         </div>
       </div>
     </div>

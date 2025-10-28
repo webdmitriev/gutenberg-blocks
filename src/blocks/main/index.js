@@ -6,7 +6,7 @@ import attributes from './attributes';
 import './editor.scss';
 import './style.scss';
 
-registerBlockType('theme/advanced-block', {
+registerBlockType('theme/main-block', {
   title: 'Заглавный блок',
   category: 'webdmitriev',
   icon: 'admin-customizer',
