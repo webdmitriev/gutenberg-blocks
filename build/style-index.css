@@ -165,7 +165,11 @@ td, th {
 }
 
 body {
-  background-color: rgba(255, 0, 0, 0.2);
+  margin: 0 !important;
+  padding: 0;
+  font-family: "Montserrat", sans-serif;
+  background-color: #ffffff;
+  color: #222222;
 }
 
 .theme-button {
