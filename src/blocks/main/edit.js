@@ -10,7 +10,7 @@ import ContentPanel from './controls/ContentPanel';
 import ImagePanel from './controls/ImagePanel';
 
 const Edit = ({ attributes, setAttributes }) => {
-  const { supTitle, title, description, button, imageOneUrl, imageOneId, backgroundColor } = attributes;
+  const { supTitle, title, description, button, imageOneUrl, imageOneId, imageTwoUrl, imageTwoId, backgroundColor } = attributes;
 
   const blockProps = useBlockProps({
     className: 'main-block',
@@ -28,6 +28,17 @@ const Edit = ({ attributes, setAttributes }) => {
     setAttributes({ imageOneUrl: '', imageOneId: 0 });
   };
 
+  const onSelectImageTwo = (media) => {
+    setAttributes({
+      imageTwoUrl: media.url,
+      imageTwoId: media.id,
+    });
+  };
+
+  const onRemoveImageTwo = () => {
+    setAttributes({ imageTwoUrl: '', imageTwoId: 0 });
+  };
+
   return (
     <>
       <InspectorControls>
@@ -38,6 +49,8 @@ const Edit = ({ attributes, setAttributes }) => {
           setAttributes={setAttributes}
           onSelectImageOne={onSelectImageOne}
           onRemoveImageOne={onRemoveImageOne}
+          onSelectImageTwo={onSelectImageTwo}
+          onRemoveImageTwo={onRemoveImageTwo}
         />
       </InspectorControls>
 
@@ -61,6 +74,11 @@ const Edit = ({ attributes, setAttributes }) => {
               {imageOneUrl && (
                 <div className="advanced-block-image">
                   <img src={imageOneUrl} className="advanced-image-preview" />
+                </div>
+              )}
+              {imageTwoUrl && (
+                <div className="advanced-block-image">
+                  <img src={imageTwoUrl} className="advanced-image-preview" />
                 </div>
               )}
             </div>

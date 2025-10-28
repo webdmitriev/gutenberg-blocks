@@ -197,11 +197,15 @@ const ImagePanel = ({
   attributes,
   setAttributes,
   onSelectImageOne,
-  onRemoveImageOne
+  onRemoveImageOne,
+  onSelectImageTwo,
+  onRemoveImageTwo
 }) => {
   const {
     imageOneUrl,
-    imageOneId
+    imageOneId,
+    imageTwoUrl,
+    imageTwoId
   } = attributes;
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.PanelBody, {
     title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Настройки изображения', 'theme'),
@@ -222,12 +226,34 @@ const ImagePanel = ({
       onClick: open,
       variant: "primary",
       icon: "upload"
-    }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Выбрать изображение', 'theme')) : (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.Button, {
+    }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Выбрать изображение 1', 'theme')) : (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.Button, {
       onClick: onRemoveImageOne,
       variant: "tertiary",
       icon: "trash",
       isDestructive: true
-    }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Удалить изображение', 'theme')))
+    }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Удалить изображение 1', 'theme')))
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.MediaUpload, {
+    onSelect: onSelectImageTwo,
+    allowedTypes: ['image'],
+    value: imageTwoId,
+    render: ({
+      open
+    }) => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+      style: {
+        display: 'flex',
+        flexDirection: 'column',
+        gap: '10px'
+      }
+    }, !imageTwoUrl ? (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.Button, {
+      onClick: open,
+      variant: "primary",
+      icon: "upload"
+    }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Выбрать изображение 2', 'theme')) : (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.Button, {
+      onClick: onRemoveImageTwo,
+      variant: "tertiary",
+      icon: "trash",
+      isDestructive: true
+    }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Удалить изображение 2', 'theme')))
   })));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ImagePanel);
@@ -329,6 +355,8 @@ const Edit = ({
     button,
     imageOneUrl,
     imageOneId,
+    imageTwoUrl,
+    imageTwoId,
     backgroundColor
   } = attributes;
   const blockProps = (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps)({
@@ -349,6 +377,18 @@ const Edit = ({
       imageOneId: 0
     });
   };
+  const onSelectImageTwo = media => {
+    setAttributes({
+      imageTwoUrl: media.url,
+      imageTwoId: media.id
+    });
+  };
+  const onRemoveImageTwo = () => {
+    setAttributes({
+      imageTwoUrl: '',
+      imageTwoId: 0
+    });
+  };
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.InspectorControls, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_controls_VideoHelpPanel__WEBPACK_IMPORTED_MODULE_3__["default"], null), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_controls_ContentPanel__WEBPACK_IMPORTED_MODULE_4__["default"], {
     attributes: attributes,
     setAttributes: setAttributes
@@ -356,7 +396,9 @@ const Edit = ({
     attributes: attributes,
     setAttributes: setAttributes,
     onSelectImageOne: onSelectImageOne,
-    onRemoveImageOne: onRemoveImageOne
+    onRemoveImageOne: onRemoveImageOne,
+    onSelectImageTwo: onSelectImageTwo,
+    onRemoveImageTwo: onRemoveImageTwo
   })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     ...blockProps
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
@@ -389,6 +431,11 @@ const Edit = ({
     className: "advanced-block-image"
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
     src: imageOneUrl,
+    className: "advanced-image-preview"
+  })), imageTwoUrl && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "advanced-block-image"
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
+    src: imageTwoUrl,
     className: "advanced-image-preview"
   })))))));
 };
