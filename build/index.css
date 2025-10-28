@@ -179,8 +179,7 @@
   border-radius: 6px;
   cursor: no-drop;
 }
-.main-block .advanced-block .advanced-block-content .advanced-block-image {
-  display: block;
+.main-block .advanced-block .advanced-block-content .advanced-block-images {
   width: 100%;
   max-width: 54%;
 }
