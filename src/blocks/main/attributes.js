@@ -17,11 +17,9 @@ export default {
   },
 
   imageOneUrl: { type: 'string', default: '' },
-  imageOneAlt: { type: 'string', default: '' },
   imageOneId: { type: 'number', default: 0 },
 
   imageTwoUrl: { type: 'string', default: '' },
-  imageTwoAlt: { type: 'string', default: '' },
   imageTwoId: { type: 'number', default: 0 },
 
   backgroundColor: { type: 'string', default: '#ffffff' },
