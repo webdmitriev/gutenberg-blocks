@@ -1,23 +1,7 @@
 import { PanelBody, TextareaControl, __experimentalInputControl as InputControl, Button, Flex } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
-import { useTypograf } from '../../../utils/useTypograf'; // путь подкорректируй под свой проект
-
-const FieldLabelWithButton = ({ label, onTypograph, hasValue }) => (
-  <Flex justify="space-between" align="center">
-    <span>{label}</span>
-    {hasValue && (
-      <Button
-        variant="tertiary"
-        size="small"
-        onClick={onTypograph}
-        title={__('Типографировать это поле', 'theme')}
-        style={{ minWidth: 'auto', padding: '4px 8px' }}
-      >
-        🎨
-      </Button>
-    )}
-  </Flex>
-);
+import { useTypograf } from '../../../utils/useTypograf';
+import FieldLabelWithButton from '../../../components/FieldLabelWithButton';
 
 const ContentPanel = ({ attributes, setAttributes }) => {
   const { supTitle, title, description, button } = attributes;

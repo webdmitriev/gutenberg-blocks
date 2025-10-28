@@ -78,28 +78,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
 /* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _utils_useTypograf__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../utils/useTypograf */ "./src/utils/useTypograf.js");
+/* harmony import */ var _components_FieldLabelWithButton__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../components/FieldLabelWithButton */ "./src/components/FieldLabelWithButton.js");
 
 
 
- // путь подкорректируй под свой проект
 
-const FieldLabelWithButton = ({
-  label,
-  onTypograph,
-  hasValue
-}) => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.Flex, {
-  justify: "space-between",
-  align: "center"
-}, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", null, label), hasValue && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.Button, {
-  variant: "tertiary",
-  size: "small",
-  onClick: onTypograph,
-  title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Типографировать это поле', 'theme'),
-  style: {
-    minWidth: 'auto',
-    padding: '4px 8px'
-  }
-}, "\uD83C\uDFA8"));
+
 const ContentPanel = ({
   attributes,
   setAttributes
@@ -143,7 +127,7 @@ const ContentPanel = ({
       textAlign: 'center'
     }
   }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Расставит кавычки, тире и неразрывные пробелы', 'theme')))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.TextareaControl, {
-    label: (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(FieldLabelWithButton, {
+    label: (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_FieldLabelWithButton__WEBPACK_IMPORTED_MODULE_4__["default"], {
       label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Текст над заголовком', 'theme'),
       onTypograph: () => typographField('supTitle'),
       hasValue: !!supTitle
@@ -155,7 +139,7 @@ const ContentPanel = ({
     placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Текст...', 'theme'),
     rows: 2
   }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.TextareaControl, {
-    label: (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(FieldLabelWithButton, {
+    label: (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_FieldLabelWithButton__WEBPACK_IMPORTED_MODULE_4__["default"], {
       label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Заголовок', 'theme'),
       onTypograph: () => typographField('title'),
       hasValue: !!title
@@ -167,7 +151,7 @@ const ContentPanel = ({
     placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Введите заголовок...', 'theme'),
     rows: 2
   }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.TextareaControl, {
-    label: (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(FieldLabelWithButton, {
+    label: (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_FieldLabelWithButton__WEBPACK_IMPORTED_MODULE_4__["default"], {
       label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Описание', 'theme'),
       onTypograph: () => typographField('description'),
       hasValue: !!description
@@ -179,7 +163,7 @@ const ContentPanel = ({
     placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Введите описание...', 'theme'),
     rows: 5
   }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.__experimentalInputControl, {
-    label: (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(FieldLabelWithButton, {
+    label: (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_FieldLabelWithButton__WEBPACK_IMPORTED_MODULE_4__["default"], {
       label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Текст кнопки', 'theme'),
       onTypograph: () => typographField('button'),
       hasValue: !!button
@@ -445,6 +429,46 @@ const Save = ({
 __webpack_require__.r(__webpack_exports__);
 // extracted by mini-css-extract-plugin
 
+
+/***/ }),
+
+/***/ "./src/components/FieldLabelWithButton.js":
+/*!************************************************!*\
+  !*** ./src/components/FieldLabelWithButton.js ***!
+  \************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__);
+
+
+
+const FieldLabelWithButton = ({
+  label,
+  onTypograph,
+  hasValue
+}) => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.Flex, {
+  justify: "space-between",
+  align: "center"
+}, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", null, label), hasValue && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.Button, {
+  variant: "tertiary",
+  size: "small",
+  onClick: onTypograph,
+  title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Типографировать это поле', 'theme'),
+  style: {
+    minWidth: 'auto',
+    padding: '4px 8px'
+  }
+}, "\uD83C\uDFA8"));
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (FieldLabelWithButton);
 
 /***/ }),
 
